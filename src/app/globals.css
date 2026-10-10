@@ -1,26 +1,193 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Infinite floating and gentle rotation */
+.rocket-svg {
+  position: relative;
+  z-index: 2;
+  animation: rocket-float 2.2s ease-in-out infinite;
+  transform-origin: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Infinite flickering exhaust */
+.rocket-fire {
+  transform-origin: 32px 45px;
+  animation: flame-flicker 0.16s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 4px #fb923c);
+}
+
+/* Button glow pulses continuously */
+.rocket-button {
+  animation: rocket-glow 2s ease-in-out infinite;
+  isolation: isolate;
+}
+
+/* Sparks orbit around the button */
+.rocket-spark {
+  position: absolute;
+  z-index: 1;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fde047;
+  box-shadow: 0 0 10px 2px #fb923c;
+  pointer-events: none;
+}
+
+.rocket-spark-one {
+  animation: spark-one 3s linear infinite;
+}
+
+.rocket-spark-two {
+  animation: spark-two 2.4s linear infinite;
+}
+
+.rocket-spark-three {
+  animation: spark-three 3.5s linear infinite;
+}
+
+/* Floating motion */
+@keyframes rocket-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-7deg);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(-2deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Changing flame length */
+@keyframes flame-flicker {
+  from {
+    transform: scaleY(0.75) scaleX(0.9);
+  }
+
+  to {
+    transform: scaleY(1.25) scaleX(1.12);
+  }
+}
+
+/* Pulsating red glow */
+@keyframes rocket-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px #dc262640,
+      0 0 25px #ef444420;
+  }
+
+  50% {
+    box-shadow:
+      0 0 20px #ef444480,
+      0 0 40px #f9731640;
+  }
+}
+
+/* Spark trajectories */
+@keyframes spark-one {
+  0% {
+    transform: translate(0, 22px) scale(0.5);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-23px, -28px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes spark-two {
+  0% {
+    transform: translate(22px, 0) scale(0.4);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-20px, -25px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes spark-three {
+  0% {
+    transform: translate(-20px, 20px) scale(0.4);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(25px, -20px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Launch overrides the idle animations */
+.rocket-button.is-launching {
+  animation: none;
+  pointer-events: none;
+}
+
+.rocket-button.is-launching .rocket-svg {
+  animation: rocket-takeoff 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+.rocket-button.is-launching .rocket-fire {
+  animation: flame-launch 0.1s ease-in-out infinite alternate;
+}
+
+.rocket-button.is-launching .rocket-spark {
+  animation-duration: 0.25s;
+}
+
+@keyframes rocket-takeoff {
+  0% {
+    transform: translate(0, 0) rotate(-7deg) scale(1);
+    opacity: 1;
+  }
+
+  15% {
+    transform: translate(0, 8px) rotate(-7deg) scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-45px, -110vh) rotate(-7deg) scale(0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes flame-launch {
+  from {
+    transform: scaleY(0.9) scaleX(0.9);
+  }
+
+  to {
+    transform: scaleY(1.5) scaleX(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocket-svg,
+  .rocket-fire,
+  .rocket-button,
+  .rocket-spark {
+    animation: none !important;
+  }
 }
