@@ -8,24 +8,24 @@ const MostRead = async () => {
   const mostReadData: IMostRead[] = data.data;
 
   return (
-    <aside className="overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm shadow-red-950/5">
+    <aside className="min-w-0 overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm shadow-red-950/5">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
-        <div>
-          <h2 className="text-lg font-extrabold tracking-tight text-gray-950">
+      <div className="flex items-center justify-between gap-3 border-b border-gray-100 px-3 py-3 md:px-4 md:py-4 lg:px-5">
+        <div className="min-w-0">
+          <h2 className="text-base font-extrabold tracking-tight text-gray-950 md:text-lg">
             সর্বাধিক পঠিত
           </h2>
           <p className="mt-1 text-xs text-gray-500">পাঠকদের আগ্রহের শীর্ষে</p>
         </div>
 
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-50 text-red-600">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600 md:h-9 md:w-9">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="h-5 w-5"
+            className="h-4 w-4 md:h-5 md:w-5"
             aria-hidden="true"
           >
             <path
@@ -39,13 +39,16 @@ const MostRead = async () => {
       </div>
 
       {/* News List */}
-      <div className="divide-y divide-gray-100 px-5">
+      <div className="divide-y divide-gray-100 px-3 md:px-4 lg:px-5">
         {mostReadData.map((item, index) => (
-          <article key={item.id} className="group py-4">
-            <Link href={`/news/${item.id}`} className="flex items-start gap-3">
+          <article key={item.id} className="group py-3 md:py-4">
+            <Link
+              href={`/news/${item.id}`}
+              className="flex items-start gap-2.5 md:gap-3"
+            >
               {/* Ranking Number */}
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-extrabold transition-colors ${
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold transition-colors md:h-8 md:w-8 md:text-sm ${
                   index < 3
                     ? "bg-red-50 text-red-600 group-hover:bg-red-600 group-hover:text-white"
                     : "bg-gray-50 text-gray-400 group-hover:bg-red-50 group-hover:text-red-600"
@@ -55,7 +58,7 @@ const MostRead = async () => {
               </span>
 
               {/* News Title */}
-              <h3 className="pt-0.5 text-sm font-semibold leading-6 text-gray-700 transition-colors group-hover:text-red-600">
+              <h3 className="min-w-0 pt-0.5 text-sm font-semibold leading-5 text-gray-700 transition-colors group-hover:text-red-600 md:leading-6">
                 {item.title}
               </h3>
             </Link>
@@ -64,7 +67,7 @@ const MostRead = async () => {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-gray-100 bg-gray-50/70 px-5 py-3">
+      <div className="border-t border-gray-100 bg-gray-50/70 px-3 py-3 md:px-5">
         <p className="text-center text-xs font-medium text-gray-500">
           পাঠকদের পছন্দের খবর
         </p>

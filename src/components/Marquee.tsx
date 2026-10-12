@@ -10,10 +10,10 @@ const Marquee = async () => {
   const latestNewses: ILatestNews[] = data.data;
 
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto mt-6 px-3 md:mt-8 md:px-4 lg:mt-10">
       <div className="flex w-full items-stretch overflow-hidden rounded-xl border border-red-100 bg-white shadow-md shadow-gray-900/5">
         {/* Breaking News Label */}
-        <div className="relative z-10 flex shrink-0 items-center gap-2 bg-red-600 px-4 py-3 text-sm font-bold text-white shadow-md sm:px-6">
+        <div className="relative z-10 flex shrink-0 items-center gap-1.5 bg-red-600 px-3 py-3 text-xs font-bold text-white shadow-md md:gap-2 md:px-5 md:text-sm lg:px-6">
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white" />
@@ -26,18 +26,18 @@ const Marquee = async () => {
         </div>
 
         {/* Scrolling Headlines */}
-        <div className="flex min-w-0 flex-1 items-center overflow-hidden px-3 sm:px-5">
+        <div className="flex min-w-0 flex-1 items-center overflow-hidden px-3 md:px-4 lg:px-5">
           <MarqueeText direction="right" duration={15}>
             {latestNewses.map((n, ind) => (
               <span key={ind} className="inline-flex items-center">
                 <Link
                   href={`/news/${n.id}`}
-                  className="whitespace-nowrap text-sm font-medium text-gray-700 transition-colors duration-200 hover:text-red-600 sm:text-base"
+                  className="whitespace-nowrap text-xs font-medium text-gray-700 transition-colors duration-200 hover:text-red-600 md:text-sm lg:text-base"
                 >
                   {n.title}
                 </Link>
 
-                <span className="mx-5 text-red-500">✦</span>
+                <span className="mx-3 text-red-500 md:mx-4 lg:mx-5">✦</span>
               </span>
             ))}
           </MarqueeText>

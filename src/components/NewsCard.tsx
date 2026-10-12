@@ -14,15 +14,16 @@ const NewsCard = ({ news }: { news: IMainNews }) => {
             width={400}
             height={240}
             priority
-            className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-44"
+            className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-44 lg:h-40"
           />
         </Link>
 
         {/* Content */}
-        <div className="p-3 sm:p-4">
-          <h2 className="text-base font-extrabold leading-snug text-gray-950 transition-colors duration-300 group-hover:text-red-600 sm:text-lg">
+        <div className="p-3 md:p-4">
+          <h2 className="text-base font-extrabold leading-snug text-gray-950 transition-colors duration-300 group-hover:text-red-600 md:text-lg">
             <Link href="#">{news.title}</Link>
           </h2>
+
           <p className="mt-2 text-xs text-gray-500">
             Published:{" "}
             {new Date(news.firstPublished).toLocaleDateString("bd-GB", {
@@ -39,7 +40,7 @@ const NewsCard = ({ news }: { news: IMainNews }) => {
           <div className="mt-3 border-t border-gray-100 pt-3">
             <Link
               href={`/news/${news.id}`}
-              className="inline-flex items-center gap-2 text-xs font-bold text-red-600 transition-all duration-300 hover:gap-3 sm:text-sm"
+              className="inline-flex items-center gap-2 text-xs font-bold text-red-600 transition-all duration-300 hover:gap-3 md:text-sm"
             >
               বিস্তারিত পড়ুন
               <span aria-hidden="true">→</span>

@@ -26,7 +26,7 @@ export default function BackToTop() {
       disabled={launching}
       aria-label="Launch rocket to top"
       title="Launch to top"
-      className={`rocket-button fixed bottom-7 right-7 z-50 grid h-20 w-20 place-items-center rounded-full border border-red-400/30 bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-xl shadow-red-600/30 transition-colors hover:from-red-400 hover:to-red-700 ${
+      className={`rocket-button fixed bottom-4 right-4 z-50 grid h-14 w-14 place-items-center rounded-full border border-red-400/30 bg-linear-to-br from-red-500 via-red-600 to-red-800 text-white shadow-xl shadow-red-600/30 transition-colors hover:from-red-400 hover:to-red-700 md:bottom-6 md:right-6 md:h-16 md:w-16 lg:bottom-7 lg:right-7 lg:h-20 lg:w-20 ${
         launching ? "is-launching" : ""
       }`}
     >
@@ -39,7 +39,7 @@ export default function BackToTop() {
       <svg
         viewBox="0 0 64 76"
         xmlns="http://www.w3.org/2000/svg"
-        className="rocket-svg h-14 w-14 overflow-visible"
+        className="rocket-svg h-10 w-10 overflow-visible md:h-12 md:w-12 lg:h-14 lg:w-14"
       >
         {/* Exhaust flame */}
         <g className="rocket-fire">

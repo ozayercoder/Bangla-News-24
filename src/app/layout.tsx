@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { Toaster } from "react-hot-toast";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -20,15 +21,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme="light"
+      data-scroll-behavior="smooth"
       className={`${notoSerifBengali.className} h-full antialiased  scroll-smooth`}
     >
       <body className="min-h-full flex flex-col  bg-[radial-gradient(ellipse_at_top_left,rgba(220,38,38,0.07),transparent_35%),radial-gradient(ellipse_at_top_right,rgba(220,38,38,0.05),transparent_30%),linear-gradient(135deg,#fffafa_0%,#ffffff_45%,#f8fafc_100%)] bg-fixed text-gray-950">
         <Header />
-
-        <main className="pt-10" id="top">
+        <Toaster />
+        <main className="pt-5 md:pt-10" id="top">
           {children}
         </main>
-        <BackToTop/>
+        <BackToTop />
         <Footer />
       </body>
     </html>
