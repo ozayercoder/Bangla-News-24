@@ -7,7 +7,11 @@
 ---
 
 
+## 📸 Preview
 
+![Project Screenshot](./bangla-news-pic.png)
+
+---
 
 
 
